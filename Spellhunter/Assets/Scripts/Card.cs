@@ -22,6 +22,6 @@ public class Card : MonoBehaviour {
     
 	void Awake ()
     {
-        cardPrefab = Resources.Load("Prefabs/CardPrefab");
+        cardPrefab = Resources.Load("Prefabs/Card");
     }
 }
