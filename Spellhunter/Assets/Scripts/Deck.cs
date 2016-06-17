@@ -4,19 +4,30 @@ using System.Collections.Generic;
 
 public class Deck : MonoBehaviour {
 
+    public Hand hand;
+    public CardDatabase database;
     private List<Card> cards;
 
     // Use this for initialization
     void Start ()
     {
         cards = new List<Card>();
-	}
+        database = GameObject.Find("CardDatabase").GetComponent<CardDatabase>();
 
-    public Card Draw()
+        // Debugging
+        AddCard(database.CreateCard("Attack"));
+        AddCard(database.CreateCard("Attack"));
+        AddCard(database.CreateCard("Attack"));
+        AddCard(database.CreateCard("Anchor"));
+        AddCard(database.CreateCard("Anchor"));
+        AddCard(database.CreateCard("Anchor"));
+    }
+
+    public void Draw()
     {
         Card top = cards[0];
         cards.RemoveAt(0);
-        return top;
+        hand.AddCard(top);
     }
 
     public void AddCard(Card card)
