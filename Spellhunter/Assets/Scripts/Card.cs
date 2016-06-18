@@ -6,4 +6,12 @@ public class Card : ScriptableObject {
 
     public string name = "";
     public string text = "";
+
+    public GameObject CreateRenderer(Transform parent)
+    {
+        GameObject cardRenderer = GameObject.Instantiate(Resources.Load("Card") as GameObject);
+        cardRenderer.transform.SetParent(parent);
+        cardRenderer.GetComponent<CardRenderer>().card = this;
+        return cardRenderer;
+    }
 }

@@ -6,12 +6,12 @@ public class Deck : MonoBehaviour {
 
     public Hand hand;
     public CardDatabase database;
-    private List<Card> cards;
-
-    // Use this for initialization
+    public float spacing = 1.0f;
+    private List<CardRenderer> cards;
+    
     void Start ()
     {
-        cards = new List<Card>();
+        cards = new List<CardRenderer>();
         database = GameObject.Find("CardDatabase").GetComponent<CardDatabase>();
 
         // Debugging
@@ -23,29 +23,41 @@ public class Deck : MonoBehaviour {
         AddCard(database.CreateCard("Anchor"));
     }
 
+    void Update()
+    {
+        for (int i = 0; i < cards.Count; ++i)
+        {
+            cards[i].targetPosition = new Vector3(0, 0, -i * spacing);
+        }
+    }
+
     public void Draw()
     {
-        Card top = cards[0];
+        CardRenderer top = cards[0];
         cards.RemoveAt(0);
         hand.AddCard(top);
     }
 
     public void AddCard(Card card)
     {
-        cards.Add(card);
+        cards.Add(card.CreateRenderer(transform).GetComponent<CardRenderer>());
     }
 
     public void AddCards(List<Card> toAdd)
     {
-        cards.AddRange(toAdd);
+        foreach (Card card in toAdd)
+        {
+            AddCard(card);
+        }
     }
 
-    public void RemoveCards(List<Card> toRemove)
+    public void Clear()
     {
-        foreach(Card c in toRemove)
+        foreach (CardRenderer card in cards)
         {
-            cards.RemoveAt(cards.IndexOf(c));
+            Destroy(card);
         }
+        cards.Clear();
     }
 
     public void Shuffle()
@@ -55,9 +67,9 @@ public class Deck : MonoBehaviour {
         {
             n--;
             int k = Random.Range(0, n + 1);
-            Card value = cards[k];
+            CardRenderer card = cards[k];
             cards[k] = cards[n];
-            cards[n] = value;
+            cards[n] = card;
         }
     }
 }
