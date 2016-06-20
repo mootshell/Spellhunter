@@ -6,6 +6,7 @@ public class Hand : MonoBehaviour {
 
     public int maxSize;
     public Canvas canvas;
+    public float spacing = 0.75f;
 
     private RectTransform rectTransform;
     private List<CardRenderer> cards;
@@ -20,7 +21,12 @@ public class Hand : MonoBehaviour {
     {
         for (int i = 0; i < cards.Count; ++i)
         {
-            cards[i].targetPosition = new Vector3(i * (cards.Count / (rectTransform.rect.width * canvas.scaleFactor)), 0, 0);
+            float cardDist = spacing * (float)(rectTransform.rect.width * canvas.scaleFactor);
+            cards[i].targetPosition = new Vector3((i - cards.Count) * (cardDist / ((float)cards.Count + 1)) + 0.5f * cardDist, 0, 0);
+            if (cards[i].flipped)
+            {
+                cards[i].flipped = false;
+            }
         }
     }
 	
@@ -42,6 +48,7 @@ public class Hand : MonoBehaviour {
     public void AddCard(CardRenderer card)
     {
         cards.Add(card);
+        card.transform.SetParent(transform);
         if (cards.Count > maxSize)
         {
             // Open discard overlay and discard a card

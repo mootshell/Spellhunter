@@ -10,8 +10,9 @@ public class CardRenderer : MonoBehaviour {
     public Text textArea;
 
     public Vector3 targetPosition;
-    public float speed = 1.0f;
+    public float speed = 2.0f;
     public float snapDistance = 5.0f;
+    public bool flipped = true;
 
     private RectTransform rectTransform;
     private float elapsedTime = 0;
@@ -30,11 +31,13 @@ public class CardRenderer : MonoBehaviour {
         {
             elapsedTime = 0;
             rectTransform.anchoredPosition3D = targetPosition;
+            rectTransform.localRotation = Quaternion.Euler(0, (flipped) ? 180 : 0, 0);
         }
         else
         {
             elapsedTime += Time.deltaTime;
             rectTransform.anchoredPosition3D = Vector3.Lerp(rectTransform.anchoredPosition3D, targetPosition, speed * elapsedTime);
+            rectTransform.localRotation = Quaternion.Lerp(rectTransform.localRotation, Quaternion.Euler(0, (flipped) ? 180 : 0, 0), speed * elapsedTime);
         }
 	}
 }
