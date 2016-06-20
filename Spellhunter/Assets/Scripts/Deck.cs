@@ -18,6 +18,9 @@ public class Deck : MonoBehaviour {
         AddCard(database.CreateCard("Attack"));
         AddCard(database.CreateCard("Attack"));
         AddCard(database.CreateCard("Attack"));
+        AddCard(database.CreateCard("Attack"));
+        AddCard(database.CreateCard("Anchor"));
+        AddCard(database.CreateCard("Anchor"));
         AddCard(database.CreateCard("Anchor"));
         AddCard(database.CreateCard("Anchor"));
         AddCard(database.CreateCard("Anchor"));
@@ -49,7 +52,10 @@ public class Deck : MonoBehaviour {
 
     public void AddCard(Card card)
     {
-        cards.Add(card.CreateRenderer(transform).GetComponent<CardRenderer>());
+        CardRenderer renderer = card.CreateRenderer(transform).GetComponent<CardRenderer>();
+        renderer.type = CardRendererType.DECK;
+        renderer.deck = this;
+        cards.Add(renderer);
     }
 
     public void AddCards(List<Card> toAdd)

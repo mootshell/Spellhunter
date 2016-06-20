@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(RectTransform))]
 public class CardRenderer : MonoBehaviour {
@@ -9,10 +10,15 @@ public class CardRenderer : MonoBehaviour {
     public Text nameArea;
     public Text textArea;
 
+    public Deck deck;
+    public Hand hand;
+
     public Vector3 targetPosition;
     public float speed = 2.0f;
     public float snapDistance = 5.0f;
     public bool flipped = true;
+    
+    public CardRendererType type = CardRendererType.DECK;
 
     private RectTransform rectTransform;
     private float elapsedTime = 0;
@@ -24,7 +30,8 @@ public class CardRenderer : MonoBehaviour {
         rectTransform = GetComponent<RectTransform>();
         rectTransform.anchoredPosition3D = new Vector3(0, 0, 0);
         rectTransform.localScale = new Vector3(1, 1, 1);
-	}
+        //targetPosition = new Vector3(0, 0, 0);
+    }
 
     void Update() {
         if (Vector3.Distance(rectTransform.anchoredPosition3D, targetPosition) < snapDistance)
@@ -40,4 +47,35 @@ public class CardRenderer : MonoBehaviour {
             rectTransform.localRotation = Quaternion.Lerp(rectTransform.localRotation, Quaternion.Euler(0, (flipped) ? 180 : 0, 0), speed * elapsedTime);
         }
 	}
+
+    public void OnMouseOver()
+    {
+        Debug.Log("Moused over card");
+        if (type == CardRendererType.DECK)
+        {
+            Debug.Log("Card in deck");
+        }
+        else if (type == CardRendererType.HAND)
+        {
+            hand.selectedCard = this;
+        }
+    }
+
+    public void OnMouseAway()
+    {
+        if (type == CardRendererType.DECK)
+        {
+
+        }
+        else if (type == CardRendererType.HAND)
+        {
+            hand.selectedCard = null;
+        }
+    }
+}
+
+
+public enum CardRendererType
+{
+    DECK, HAND
 }

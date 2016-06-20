@@ -7,11 +7,12 @@ public class Hand : MonoBehaviour {
     public int maxSize;
     public Canvas canvas;
     public float spacing = 0.75f;
+    public CardRenderer selectedCard;
 
     private RectTransform rectTransform;
     private List<CardRenderer> cards;
-    
-	void Start ()
+
+    void Start ()
     {
         rectTransform = GetComponent<RectTransform>();
         cards = new List<CardRenderer>();
@@ -28,14 +29,19 @@ public class Hand : MonoBehaviour {
                 cards[i].flipped = false;
             }
         }
+
+        if (selectedCard != null)
+        {
+            selectedCard.targetPosition.y = 40.0f;
+        }
     }
 	
-    public void Play(int index)
+    public void PlaySelected()
     {
 
     }
 
-    public void Discard(int index)
+    public void DiscardSelected()
     {
 
     }
@@ -51,6 +57,8 @@ public class Hand : MonoBehaviour {
         {
             cards.Add(card);
             card.transform.SetParent(transform);
+            card.type = CardRendererType.HAND;
+            card.hand = this;
             return true;
         }
         return false;
