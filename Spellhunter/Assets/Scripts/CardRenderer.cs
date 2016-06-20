@@ -50,10 +50,9 @@ public class CardRenderer : MonoBehaviour {
 
     public void OnMouseOver()
     {
-        Debug.Log("Moused over card");
         if (type == CardRendererType.DECK)
         {
-            Debug.Log("Card in deck");
+
         }
         else if (type == CardRendererType.HAND)
         {
@@ -70,6 +69,18 @@ public class CardRenderer : MonoBehaviour {
         else if (type == CardRendererType.HAND)
         {
             hand.selectedCard = null;
+        }
+    }
+
+    public void OnMouseClick()
+    {
+        if (type == CardRendererType.DECK)
+        {
+            deck.DrawCard();
+        }
+        else if (type == CardRendererType.HAND)
+        {
+            
         }
     }
 }

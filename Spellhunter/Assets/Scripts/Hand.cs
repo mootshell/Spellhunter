@@ -12,11 +12,11 @@ public class Hand : MonoBehaviour {
     private RectTransform rectTransform;
     private List<CardRenderer> cards;
 
-    void Start ()
+    void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         cards = new List<CardRenderer>();
-	}
+    }
 
     void Update()
     {
@@ -62,5 +62,10 @@ public class Hand : MonoBehaviour {
             return true;
         }
         return false;
+    }
+
+    public bool IsFull()
+    {
+        return cards.Count >= maxSize;
     }
 }

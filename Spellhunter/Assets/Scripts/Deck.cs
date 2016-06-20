@@ -9,7 +9,7 @@ public class Deck : MonoBehaviour {
     public float spacing = 1.0f;
     private List<CardRenderer> cards;
     
-    void Start ()
+    void Start()
     {
         cards = new List<CardRenderer>();
         database = GameObject.Find("CardDatabase").GetComponent<CardDatabase>();
@@ -38,7 +38,7 @@ public class Deck : MonoBehaviour {
         }
     }
 
-    public void Draw()
+    public bool DrawCard()
     {
         if (cards.Count != 0)
         {
@@ -46,8 +46,10 @@ public class Deck : MonoBehaviour {
             if (hand.AddCard(top))
             {
                 cards.RemoveAt(cards.Count - 1);
+                return true;
             }
         }
+        return false;
     }
 
     public void AddCard(Card card)
