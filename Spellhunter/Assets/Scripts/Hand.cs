@@ -40,18 +40,19 @@ public class Hand : MonoBehaviour {
 
     }
 
-    public void AddCard(Card card)
+    public bool AddCard(Card card)
     {
-        AddCard(card.CreateRenderer(transform).GetComponent<CardRenderer>());
+        return AddCard(card.CreateRenderer(transform).GetComponent<CardRenderer>());
     }
 
-    public void AddCard(CardRenderer card)
+    public bool AddCard(CardRenderer card)
     {
-        cards.Add(card);
-        card.transform.SetParent(transform);
-        if (cards.Count > maxSize)
+        if (cards.Count < maxSize)
         {
-            // Open discard overlay and discard a card
+            cards.Add(card);
+            card.transform.SetParent(transform);
+            return true;
         }
+        return false;
     }
 }

@@ -40,8 +40,10 @@ public class Deck : MonoBehaviour {
         if (cards.Count != 0)
         {
             CardRenderer top = cards[cards.Count - 1];
-            cards.RemoveAt(cards.Count - 1);
-            hand.AddCard(top);
+            if (hand.AddCard(top))
+            {
+                cards.RemoveAt(cards.Count - 1);
+            }
         }
     }
 
