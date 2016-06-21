@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(RectTransform))]
 public class CardRenderer : MonoBehaviour {

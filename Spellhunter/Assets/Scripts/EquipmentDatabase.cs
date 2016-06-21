@@ -29,7 +29,7 @@ public class EquipmentDatabase : MonoBehaviour {
             JSONNode weaponJSON = json["weapons"][i];
             Weapon weapon = (Weapon)ScriptableObject.CreateInstance<Weapon>();
             weapon.equipName = weaponJSON["name"];
-            Debug.Log(weaponJSON["text"]);
+            weapon.text = weaponJSON["text"];
             weapon.weight = weaponJSON["weight"];
             weapon.twohanded = weaponJSON["two-handed"].AsBool;
             weapon.range = weaponJSON["range"];
@@ -46,7 +46,7 @@ public class EquipmentDatabase : MonoBehaviour {
                 weapon.cardCounts.Add(abilities[j], counts[j].AsInt);
             }
 
-            dict.Add(weapon.name, weapon);
+            dict.Add(weapon.equipName, weapon);
         }
 
         for (int i = 0; i < json["shields"].Count; ++i)
@@ -68,7 +68,7 @@ public class EquipmentDatabase : MonoBehaviour {
                 shield.cardCounts.Add(abilities[j], counts[j].AsInt);
             }
 
-            dict.Add(shield.name, shield);
+            dict.Add(shield.equipName, shield);
         }
 
         for (int i = 0; i < json["armour"].Count; ++i)
@@ -89,7 +89,7 @@ public class EquipmentDatabase : MonoBehaviour {
                 armour.cardCounts.Add(abilities[j], counts[j].AsInt);
             }
 
-            dict.Add(armour.name, armour);
+            dict.Add(armour.equipName, armour);
         }
 
         return dict;
