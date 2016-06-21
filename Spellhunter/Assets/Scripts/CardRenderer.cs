@@ -25,8 +25,8 @@ public class CardRenderer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        nameArea.text = card.name;
-        textArea.text = card.text;
+        nameArea.text = card.cardName;
+        textArea.text = card.cardText;
         rectTransform = GetComponent<RectTransform>();
         rectTransform.anchoredPosition3D = new Vector3(0, 0, 0);
         rectTransform.localScale = new Vector3(1, 1, 1);

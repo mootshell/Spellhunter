@@ -1,0 +1,45 @@
+{
+	"weapons" : [
+		{
+			"name" : "Short Sword",
+			"weight" : "Medium",
+			"range" : "Melee",
+			"requirements" : "STR 4, AGI 4",
+			"damage" : "1d6",
+			"scaling" : "STR",
+			"abilities" : ["Attack", "Block", "Heavy Attack"],
+			"counts" : [5, 3, 2]
+		}
+
+	],
+
+	"shields" : [
+		{
+			"name" : "Kite Shield",
+			"weight" : "Medium",
+			"requirements" : "STR 4, AGI 4",
+			"armour" : 2,
+			"abilities" : ["Attack", "Block", "Heavy Attack"],
+			"counts" : [5, 3, 2]
+		}
+	],
+
+	"items" : [
+		{
+			"name" : "Spell Battery",
+			"text" : "This item is unuseable in a Counterspell Field. After playing Heal, the Spell Battery becomes unuseable until you next rest at a meteorite.",
+			"abilities" : ["Heal"],
+			"counts" : [1]
+		}
+	],
+
+	"armour" : [
+		{
+			"name" : "Chain Shirt",
+			"weight" : "Medium",
+			"armour" : 2
+		}
+
+	]
+
+}

@@ -14,7 +14,7 @@ public class CardDatabase : MonoBehaviour {
 
     public Card CreateCard(string cardName)
     {
-        return (Card)Object.Instantiate<Card>(cards[cardName]);
+        return cards.ContainsKey(cardName) ? (Card)Object.Instantiate<Card>(cards[cardName]) : null;
     }
 
     private Dictionary<string, Card> LoadCards(TextAsset filepath)
@@ -27,18 +27,18 @@ public class CardDatabase : MonoBehaviour {
         {
             JSONNode cardJSON = json["abilities"][i];
             Card card = (Card)ScriptableObject.CreateInstance<Card>();
-            card.name = cardJSON["name"];
-            card.text = cardJSON["text"];
-            dict.Add(card.name, card);
+            card.cardName = cardJSON["name"];
+            card.cardText = cardJSON["text"];
+            dict.Add(card.cardName, card);
         }
 
         for (int i = 0; i < json["spells"].Count; ++i)
         {
             JSONNode cardJSON = json["spells"][i];
             Card card = (Card)ScriptableObject.CreateInstance<Card>();
-            card.name = cardJSON["name"];
-            card.text = cardJSON["text"];
-            dict.Add(card.name, card);
+            card.cardName = cardJSON["name"];
+            card.cardText = cardJSON["text"];
+            dict.Add(card.cardName, card);
         }
 
         return dict;

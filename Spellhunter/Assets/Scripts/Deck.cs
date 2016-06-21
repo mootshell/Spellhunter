@@ -52,12 +52,15 @@ public class Deck : MonoBehaviour {
         return false;
     }
 
-    public void AddCard(Card card)
+    public bool AddCard(Card card)
     {
+        if (card == null) { return false; }
+
         CardRenderer renderer = card.CreateRenderer(transform).GetComponent<CardRenderer>();
         renderer.type = CardRendererType.DECK;
         renderer.deck = this;
         cards.Add(renderer);
+        return true;
     }
 
     public void AddCards(List<Card> toAdd)

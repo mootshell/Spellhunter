@@ -13,6 +13,5 @@ public class TurnManager : MonoBehaviour {
     public void EndTurn()
     {
         //traits.UntapAll();
-        //equipment.UntapAll();
     }
 }

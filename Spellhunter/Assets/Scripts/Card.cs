@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class Card : ScriptableObject {
 
-    public string name = "";
-    public string text = "";
+    public string cardName = "";
+    public string cardText = "";
 
     public GameObject CreateRenderer(Transform parent)
     {
