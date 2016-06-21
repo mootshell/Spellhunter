@@ -2,10 +2,12 @@
 	"abilities" : [
 		{
 			"name" : "Anchor",
+			"phase" : "Prep",
 			"text" : "This turn, you cannot be moved by any ability."
 		},
 		{
 			"name" : "Attack",
+			"phase" : "Attack",
 			"text" : "Attack a target for damage equal to a useable equipped weapon's damage roll plus scaling."
 		}
 	],

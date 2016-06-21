@@ -3,6 +3,7 @@
 		{
 			"name" : "Short Sword",
 			"weight" : "Medium",
+			"two-handed" : false,
 			"range" : "Melee",
 			"requirements" : "STR 4, AGI 4",
 			"damage" : "1d6",
@@ -19,8 +20,8 @@
 			"weight" : "Medium",
 			"requirements" : "STR 4, AGI 4",
 			"armour" : 2,
-			"abilities" : ["Attack", "Block", "Heavy Attack"],
-			"counts" : [5, 3, 2]
+			"abilities" : ["Guard", "Parry"],
+			"counts" : [6, 4]
 		}
 	],
 

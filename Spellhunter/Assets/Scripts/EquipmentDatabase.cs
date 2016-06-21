@@ -9,7 +9,7 @@ public class EquipmentDatabase : MonoBehaviour {
 
     void Start()
     {
-
+        equipment = LoadEquipment(equipmentData);
     }
 
     public Equipment CreateEquipment(string equipmentName)
@@ -31,6 +31,7 @@ public class EquipmentDatabase : MonoBehaviour {
             weapon.equipName = weaponJSON["name"];
             Debug.Log(weaponJSON["text"]);
             weapon.weight = weaponJSON["weight"];
+            weapon.twohanded = weaponJSON["two-handed"].AsBool;
             weapon.range = weaponJSON["range"];
             weapon.requirements = weaponJSON["requirements"];
             weapon.damage = weaponJSON["damage"];
@@ -46,6 +47,49 @@ public class EquipmentDatabase : MonoBehaviour {
             }
 
             dict.Add(weapon.name, weapon);
+        }
+
+        for (int i = 0; i < json["shields"].Count; ++i)
+        {
+            JSONNode shieldJSON = json["shields"][i];
+            Shield shield = (Shield)ScriptableObject.CreateInstance<Shield>();
+            shield.equipName = shieldJSON["name"];
+            shield.text = shieldJSON["text"];
+            shield.weight = shieldJSON["weight"];
+            shield.requirements = shieldJSON["requirements"];
+            shield.armour = shieldJSON["armour"].AsInt;
+
+            JSONNode abilities = shieldJSON["abilities"];
+            JSONNode counts = shieldJSON["counts"];
+            if (abilities.Count != counts.Count) { continue; }
+            shield.cardCounts = new Dictionary<string, int>();
+            for (int j = 0; j < abilities.Count; ++j)
+            {
+                shield.cardCounts.Add(abilities[j], counts[j].AsInt);
+            }
+
+            dict.Add(shield.name, shield);
+        }
+
+        for (int i = 0; i < json["armour"].Count; ++i)
+        {
+            JSONNode armourJSON = json["armour"][i];
+            Armour armour = (Armour)ScriptableObject.CreateInstance<Armour>();
+            armour.equipName = armourJSON["name"];
+            armour.text = armourJSON["text"];
+            armour.weight = armourJSON["weight"];
+            armour.armour = armourJSON["armour"].AsInt;
+
+            JSONNode abilities = armourJSON["abilities"];
+            JSONNode counts = armourJSON["counts"];
+            if (abilities.Count != counts.Count) { continue; }
+            armour.cardCounts = new Dictionary<string, int>();
+            for (int j = 0; j < abilities.Count; ++j)
+            {
+                armour.cardCounts.Add(abilities[j], counts[j].AsInt);
+            }
+
+            dict.Add(armour.name, armour);
         }
 
         return dict;
