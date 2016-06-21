@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\CardDatabase.cs" />
     <Compile Include="Assets\Scripts\CardRenderer.cs" />
     <Compile Include="Assets\Scripts\Deck.cs" />
+    <Compile Include="Assets\Scripts\DiscardPile.cs" />
     <Compile Include="Assets\Scripts\Equipment.cs" />
     <Compile Include="Assets\Scripts\EquipmentDatabase.cs" />
     <Compile Include="Assets\Scripts\EquipmentSlot.cs" />

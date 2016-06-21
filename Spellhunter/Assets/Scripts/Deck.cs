@@ -71,6 +71,19 @@ public class Deck : MonoBehaviour {
         }
     }
 
+    public void RemoveCard(string cardName)
+    {
+        foreach (CardRenderer card in cards)
+        {
+            if (card.card.cardName.Equals(cardName))
+            {
+                cards.Remove(card);
+                Destroy(card);
+                break;
+            }
+        }
+    }
+
     public void Clear()
     {
         foreach (CardRenderer card in cards)

@@ -23,24 +23,5 @@
 			"abilities" : ["Guard", "Parry"],
 			"counts" : [6, 4]
 		}
-	],
-
-	"items" : [
-		{
-			"name" : "Spell Battery",
-			"text" : "This item is unuseable in a Counterspell Field. After playing Heal, the Spell Battery becomes unuseable until you next rest at a meteorite.",
-			"abilities" : ["Heal"],
-			"counts" : [1]
-		}
-	],
-
-	"armour" : [
-		{
-			"name" : "Chain Shirt",
-			"weight" : "Medium",
-			"armour" : 2
-		}
-
 	]
-
 }

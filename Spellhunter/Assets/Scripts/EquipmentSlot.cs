@@ -7,6 +7,7 @@ public class EquipmentSlot : MonoBehaviour {
     public CardDatabase database;
 
     public Image icon;
+    public Button unequipButton;
     public Text nameArea;
     public Text infoArea;
     public Text textArea;
@@ -21,6 +22,7 @@ public class EquipmentSlot : MonoBehaviour {
         equipRenderer.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
         equipRenderer.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         equipRenderer.SetActive(false);
+        unequipButton.gameObject.SetActive(false);
     }
 	
 	void Update ()
@@ -45,11 +47,19 @@ public class EquipmentSlot : MonoBehaviour {
                 deck.AddCard(database.CreateCard(abilityName));
             }
         }
+        unequipButton.gameObject.SetActive(true);
     }
 
     public void Unequip()
     {
-
+        foreach (string abilityName in equipped.cardCounts.Keys)
+        {
+            for (int i = 0; i < equipped.cardCounts[abilityName]; ++i)
+            {
+                deck.RemoveCard(abilityName);
+            }
+        }
+        equipped = null;
     }
 
     public void OnMouseOver()
