@@ -8,6 +8,7 @@ public class Hand : MonoBehaviour {
     public Canvas canvas;
     public float spacing = 0.75f;
     public CardRenderer selectedCard;
+    public DiscardPile discard;
 
     private RectTransform rectTransform;
     private List<CardRenderer> cards;
@@ -38,12 +39,9 @@ public class Hand : MonoBehaviour {
 	
     public void PlaySelected()
     {
-
-    }
-
-    public void DiscardSelected()
-    {
-
+        cards.Remove(selectedCard);
+        discard.AddCard(selectedCard);
+        selectedCard = null;
     }
 
     public bool AddCard(Card card)

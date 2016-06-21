@@ -8,20 +8,18 @@ public class EquipmentSlot : MonoBehaviour {
 
     public Image icon;
     public Button unequipButton;
+    public GameObject tooltip;
     public Text nameArea;
     public Text infoArea;
     public Text textArea;
 
     private Equipment equipped = null;
-    private GameObject equipRenderer;
     
 	void Start ()
     {
-        equipRenderer = GameObject.Instantiate(Resources.Load("Equipment") as GameObject);
-        equipRenderer.transform.SetParent(transform);
-        equipRenderer.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
-        equipRenderer.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        equipRenderer.SetActive(false);
+        tooltip.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+        tooltip.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        tooltip.SetActive(false);
         unequipButton.gameObject.SetActive(false);
     }
 	
@@ -66,7 +64,7 @@ public class EquipmentSlot : MonoBehaviour {
     {
         if (equipped != null)
         {
-            equipRenderer.SetActive(true);
+            tooltip.SetActive(true);
             nameArea.text = equipped.equipName;
             textArea.text = equipped.text;
         }
@@ -74,6 +72,6 @@ public class EquipmentSlot : MonoBehaviour {
 
     public void OnMouseAway()
     {
-        equipRenderer.SetActive(false);
+        tooltip.SetActive(false);
     }
 }

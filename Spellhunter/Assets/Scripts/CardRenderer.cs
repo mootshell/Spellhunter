@@ -10,6 +10,7 @@ public class CardRenderer : MonoBehaviour {
 
     public Deck deck;
     public Hand hand;
+    public DiscardPile discard;
 
     public Vector3 targetPosition;
     public float speed = 2.0f;
@@ -48,11 +49,7 @@ public class CardRenderer : MonoBehaviour {
 
     public void OnMouseOver()
     {
-        if (type == CardRendererType.DECK)
-        {
-
-        }
-        else if (type == CardRendererType.HAND)
+        if (type == CardRendererType.HAND)
         {
             hand.selectedCard = this;
         }
@@ -60,11 +57,7 @@ public class CardRenderer : MonoBehaviour {
 
     public void OnMouseAway()
     {
-        if (type == CardRendererType.DECK)
-        {
-
-        }
-        else if (type == CardRendererType.HAND)
+        if (type == CardRendererType.HAND)
         {
             hand.selectedCard = null;
         }
@@ -78,7 +71,11 @@ public class CardRenderer : MonoBehaviour {
         }
         else if (type == CardRendererType.HAND)
         {
-            
+            hand.PlaySelected();
+        }
+        else if (type == CardRendererType.DISCARD)
+        {
+            discard.Reshuffle();
         }
     }
 }
@@ -86,5 +83,5 @@ public class CardRenderer : MonoBehaviour {
 
 public enum CardRendererType
 {
-    DECK, HAND
+    DECK, HAND, DISCARD
 }

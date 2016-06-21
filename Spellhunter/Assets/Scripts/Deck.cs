@@ -59,6 +59,17 @@ public class Deck : MonoBehaviour {
         CardRenderer renderer = card.CreateRenderer(transform).GetComponent<CardRenderer>();
         renderer.type = CardRendererType.DECK;
         renderer.deck = this;
+        renderer.transform.SetParent(transform);
+        cards.Add(renderer);
+        return true;
+    }
+
+    public bool AddCard(CardRenderer renderer)
+    {
+        if (renderer == null) { return false; }
+        renderer.type = CardRendererType.DECK;
+        renderer.deck = this;
+        renderer.transform.SetParent(transform);
         cards.Add(renderer);
         return true;
     }
@@ -66,6 +77,14 @@ public class Deck : MonoBehaviour {
     public void AddCards(List<Card> toAdd)
     {
         foreach (Card card in toAdd)
+        {
+            AddCard(card);
+        }
+    }
+
+    public void AddCards(List<CardRenderer> toAdd)
+    {
+        foreach (CardRenderer card in toAdd)
         {
             AddCard(card);
         }
