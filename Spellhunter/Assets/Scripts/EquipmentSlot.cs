@@ -4,7 +4,10 @@ using UnityEngine.UI;
 public class EquipmentSlot : MonoBehaviour {
 
     public Deck deck;
-    public CardDatabase database;
+    public CardDatabase cardDatabase;
+    public EquipmentDatabase equipmentDatabase;
+
+    public InputField searchBox;
 
     public Image icon;
     public Button unequipButton;
@@ -42,7 +45,7 @@ public class EquipmentSlot : MonoBehaviour {
         {
             for (int i = 0; i < equipped.cardCounts[abilityName]; ++i)
             {
-                deck.AddCard(database.CreateCard(abilityName));
+                deck.AddCard(cardDatabase.CreateCard(abilityName));
             }
         }
         unequipButton.gameObject.SetActive(true);
@@ -57,6 +60,7 @@ public class EquipmentSlot : MonoBehaviour {
                 deck.RemoveCard(abilityName);
             }
         }
+        unequipButton.gameObject.SetActive(false);
         equipped = null;
     }
 
@@ -67,11 +71,53 @@ public class EquipmentSlot : MonoBehaviour {
             tooltip.SetActive(true);
             nameArea.text = equipped.equipName;
             textArea.text = equipped.text;
+
+            string info = "";
+
+            if (equipped is Weapon)
+            {
+                Weapon weapon = (Weapon)equipped;
+                info += weapon.twohanded ? "Two-handed" : "One-handed";
+                info += " ";
+                info += weapon.weight;
+                info += " ";
+                info += weapon.range;
+                info += " Weapon";
+                info += "\n";
+                info += weapon.requirements;
+                info += "\n";
+                info += weapon.damage;
+                info += " + ";
+                info += weapon.scaling;
+            }
+            else if (equipped is Shield)
+            {
+                Shield shield = (Shield)equipped;
+                info += shield.weight;
+                info += " Shield";
+                info += "\n";
+                info += "Armour ";
+                info += shield.armour;
+            }
+
+            infoArea.text = info;
         }
     }
 
     public void OnMouseAway()
     {
         tooltip.SetActive(false);
+    }
+
+    public void OnMouseClick()
+    {
+        Equipment equip = equipmentDatabase.CreateEquipment(searchBox.text);
+        
+        if (equip != null)
+        {
+            Equip(equip);
+        }
+
+        searchBox.text = "";
     }
 }

@@ -14,7 +14,7 @@ public class EquipmentDatabase : MonoBehaviour {
 
     public Equipment CreateEquipment(string equipmentName)
     {
-        return equipment.ContainsKey(equipmentName) ? (Equipment)Object.Instantiate<Equipment>(equipment[equipmentName]) : null;
+        return equipment.ContainsKey(equipmentName) ? equipment[equipmentName] : null;
     }
 
 

@@ -5,25 +5,12 @@ using System.Collections.Generic;
 public class Deck : MonoBehaviour {
 
     public Hand hand;
-    public CardDatabase database;
     public float spacing = 1.0f;
     private List<CardRenderer> cards;
     
     void Start()
     {
         cards = new List<CardRenderer>();
-        database = GameObject.Find("CardDatabase").GetComponent<CardDatabase>();
-
-        // Debugging
-        AddCard(database.CreateCard("Attack"));
-        AddCard(database.CreateCard("Attack"));
-        AddCard(database.CreateCard("Attack"));
-        AddCard(database.CreateCard("Attack"));
-        AddCard(database.CreateCard("Anchor"));
-        AddCard(database.CreateCard("Anchor"));
-        AddCard(database.CreateCard("Anchor"));
-        AddCard(database.CreateCard("Anchor"));
-        AddCard(database.CreateCard("Anchor"));
     }
 
     void Update()
@@ -97,7 +84,7 @@ public class Deck : MonoBehaviour {
             if (card.card.cardName.Equals(cardName))
             {
                 cards.Remove(card);
-                Destroy(card);
+                Destroy(card.gameObject);
                 break;
             }
         }
