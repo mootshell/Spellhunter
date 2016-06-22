@@ -1,15 +1,19 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 
 public class CardBrowser : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public CardDatabase database;
+    public Deck deck;
+    public InputField searchBox;
+
+	public void OnMouseClick()
+    {
+        Card card = database.CreateCard(searchBox.text);
+        if (card != null)
+        {
+            deck.AddCard(card);
+        }
+        searchBox.text = "";
+    }
 }
