@@ -1,6 +1,28 @@
 {
 	"weapons" : [
 		{
+			"name" : "Dagger",
+			"weight" : "Light",
+			"two-handed" : false,
+			"range" : "Melee",
+			"requirements" : "AGI 5",
+			"damage" : "1d4",
+			"scaling" : "AGI",
+			"abilities" : ["Backstep", "Attack", "Piercing Attack"],
+			"counts" : [4, 3, 3]
+		},
+		{
+			"name" : "Pistol",
+			"weight" : "Light",
+			"two-handed" : false,
+			"range" : "Ranged",
+			"requirements" : "AGI 4, PER 5",
+			"damage" : "1d6",
+			"scaling" : "PER",
+			"abilities" : ["Attack", "Running Attack", "Ready"],
+			"counts" : [5, 3, 2]
+		},
+		{
 			"name" : "Short Sword",
 			"weight" : "Medium",
 			"two-handed" : false,
@@ -10,8 +32,40 @@
 			"scaling" : "STR",
 			"abilities" : ["Attack", "Block", "Heavy Attack"],
 			"counts" : [5, 3, 2]
-		}
-
+		},
+		{
+			"name" : "Whip",
+			"weight" : "Light",
+			"two-handed" : false,
+			"range" : "Reach 3",
+			"requirements" : "AGI 5, PER 4",
+			"damage" : "1d4",
+			"scaling" : "AGI",
+			"abilities" : ["Pull", "Attack", "Piercing Attack"],
+			"counts" : [4, 3, 3]
+		},
+		{
+			"name" : "Bite",
+			"weight" : "Light",
+			"two-handed" : false,
+			"range" : "Melee",
+			"requirements" : "AGI 4",
+			"damage" : "1d4",
+			"scaling" : "AGI",
+			"abilities" : [],
+			"counts" : []
+		},
+		{
+			"name" : "Battle Axe",
+			"weight" : "Medium",
+			"two-handed" : false,
+			"range" : "Melee",
+			"requirements" : "STR 5",
+			"damage" : "1d6",
+			"scaling" : "STR",
+			"abilities" : ["Heavy Attack", "Attack", "Warcry"],
+			"counts" : [4, 3, 3]
+		},
 	],
 
 	"shields" : [

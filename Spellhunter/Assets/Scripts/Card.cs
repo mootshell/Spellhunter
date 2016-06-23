@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Card : ScriptableObject {
 
     public string cardName = "";
+    public string cardPhase = "";
     public string cardText = "";
 
     public GameObject CreateRenderer(Transform parent)

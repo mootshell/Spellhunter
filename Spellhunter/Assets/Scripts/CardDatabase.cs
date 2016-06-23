@@ -28,6 +28,7 @@ public class CardDatabase : MonoBehaviour {
             JSONNode cardJSON = json["abilities"][i];
             Card card = (Card)ScriptableObject.CreateInstance<Card>();
             card.cardName = cardJSON["name"];
+            card.cardPhase = cardJSON["phase"];
             card.cardText = cardJSON["text"];
             dict.Add(card.cardName, card);
         }

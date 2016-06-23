@@ -9,10 +9,144 @@
 			"name" : "Attack",
 			"phase" : "Attack",
 			"text" : "Attack a target for damage equal to a useable equipped weapon's damage roll plus scaling."
-		}
+		},
+		{
+			"name" : "Backstep",
+			"phase" : "Dash",
+			"text" : "Move up to half your movement distance backwards in a straight line."
+		},
+		{
+			"name" : "Block",
+			"phase" : "Prep",
+			"text" : "This turn, you gain armour equal to a useable equipped weapon’s damage roll when attacked from the direction you’re facing."
+		},
+		{
+			"name" : "Bombard",
+			"phase" : "Attack",
+			"text" : "Attack a target and all adjacent targets for damage equal to a useable equipped weapon’s damage roll plus scaling."
+		},
+		{
+			"name" : "Guard",
+			"phase" : "Prep",
+			"text" : "This turn, you gain armour equal to a useable equipped shield’s armour when attacked from the direction you’re facing."
+		},
+		{
+			"name" : "Heavy Attack",
+			"phase" : "Attack",
+			"text" : "Attack a target for damage equal to twice a useable equipped weapon’s damage roll plus scaling. Afterwards, you are vulnerable until the end of the next turn."
+		},
+		{
+			"name" : "Piercing Attack",
+			"phase" : "Attack",
+			"text" : "Attack a target for direct damage equal to a useable equipped weapon’s damage roll."
+		},
+		{
+			"name" : "Pull",
+			"phase" : "Dash",
+			"text" : "If the target is of equal or smaller size than you, place them on an adjacent space."
+		},
+		{
+			"name" : "Running Attack",
+			"phase" : "Attack",
+			"text" : "Move up to half your movement distance. Once during your movement, you may attack a target for damage equal to a useable equipped weapon’s damage roll plus scaling."
+		},
+		{
+			"name" : "Parry",
+			"phase" : "Attack",
+			"text" : "This turn, you take no damage from Attack Phase abilities from adjacent sources in the direction you’re facing. Attackers blocked by Parry are vulnerable until the end of the next turn."
+		},
+		{
+			"name" : "Shove",
+			"phase" : "Dash",
+			"text" : "Move up to half your movement distance (rounded up) in a straight line. If your movement ends adjacent to a target, you may push them the same distance you moved along the same path."
+		},
+		{
+			"name" : "Overexert",
+			"phase" : "Decision",
+			"text" : "Play two spells or abilities. After both have resolved, you take direct damage equal to your VIT."
+		},
+		{
+			"name" : "Multitask",
+			"phase" : "Decision",
+			"text" : "Play two spells or abilities with the same phase."
+		},
+		{
+			"name" : "Insight",
+			"phase" : "Utility",
+			"text" : "If you haven’t taken any damage this turn, draw up to as many cards as your INT. Then discard the same number of cards from your hand."
+		},
+		{
+			"name" : "Leaping Attack",
+			"phase" : "Attack",
+			"text" : "Move up to your movement distance in a straight line and up to half your movement distance either up or down. Afterwards, attack a target for damage equal to a useable equipped weapon’s damage roll plus scaling."
+		},
+		{
+			"name" : "Disarm",
+			"phase" : "Utility",
+			"text" : "The target drops their weapon, rendering them unable to play its ability cards."
+		},
+		{
+			"name" : "Ready",
+			"phase" : "Prep",
+			"text" : "If you do not take any damage this turn, next turn, your abilities activate one phase sooner."
+		},
+		{
+			"name" : "Charging Attack",
+			"phase" : "Dash",
+			"text" : "Must have played only a Prep Phase ability last turn. Move up to your movement distance in a straight line. If you move adjacent to a target of equal or smaller size than you, move them one space out of your way and continue your movement. If you moved a target in this way, they take damage equal to a useable equipped weapon’s damage roll and are vulnerable until the end of the next turn."
+		},
+		{
+			"name" : "Warcry",
+			"phase" : "Prep",
+			"text" : "This turn, all adjacent allies add their scaling twice."
+		},
 	],
 	
 	"spells" : [
-
+		{
+			"name" : "Barrier",
+			"phase" : "Prep",
+			"text" : "Until the end of the next turn, you are surrounded by a barrier one space in radius. Nothing can move through the barrier, and anything inside the barrier cannot be targeted by anything outside the barrier."
+		},
+		{
+			"name" : "Heat",
+			"phase" : "Attack",
+			"text" : "Target an inanimate object. The target becomes extremely hot until the end of the next turn."
+		},
+		{
+			"name" : "Shapeshift",
+			"phase" : "Utility",
+			"text" : "You change shape into another living creature, taking on that creature’s appearance and some of their traits."
+		},
+		{
+			"name" : "Spell Burn",
+			"phase" : "Attack",
+			"text" : "Attack a target for damage equal to your class damage roll plus scaling."
+		},
+		{
+			"name" : "Spell Blast",
+			"phase" : "Attack",
+			"text" : "Attack a target and all adjacent targets for damage equal to your class damage roll."
+		},
+		{
+			"name" : "Withering Respite",
+			"phase" : "Utility",
+			"text" : "The target loses 1 Withering and you gain 1 Withering. You are vulnerable until the end of the next turn."
+		},
+		{
+			"name" : "Ground Swap",
+			"phase" : "Dash",
+			"text" : "Swap positions with a target a number of spaces away less than or equal to your class scaling."
+		},
+		{
+			"name" : "Clairvoyance",
+			"phase" : "Decision",
+			"text" : "Play after all other allies and enemies have decided on their action. Look at all enemies’ played cards. Afterwards, play another spell or ability."
+		},
+		{
+			"name" : "Counterspell",
+			"phase" : "Any",
+			"text" : "Choose a phase and a target. If the target casts a spell during that phase, that spell has no effect."
+		},
 	]
 }

@@ -6,6 +6,7 @@ public class CardRenderer : MonoBehaviour {
 
     public Card card;
     public Text nameArea;
+    public Text phaseArea;
     public Text textArea;
 
     public Deck deck;
@@ -25,6 +26,7 @@ public class CardRenderer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         nameArea.text = card.cardName;
+        phaseArea.text = card.cardPhase + " Phase";
         textArea.text = card.cardText;
         rectTransform = GetComponent<RectTransform>();
         rectTransform.anchoredPosition3D = new Vector3(0, 0, 0);
